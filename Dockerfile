@@ -4,8 +4,8 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the Spring Boot application
-FROM openjdk:17-jdk-slim
+# Stage 2: Run the Spring Boot application using Eclipse Temurin JDK 17
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
